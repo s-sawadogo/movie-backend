@@ -6,10 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
-# personal notes
-Notes.txt
+# text files 
+*.txt
 # data
-data/
+*.csv
 
 
 # Distribution / packaging
