@@ -8,8 +8,13 @@ __pycache__/
 
 # text files 
 *.txt
+Notes.md
 # data
-*.csv
+data/*
+#*.csv
+
+movies.db
+my_tests.py
 
 
 # Distribution / packaging
