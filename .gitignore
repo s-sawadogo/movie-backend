@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # text files 
-*.txt
+Notes.txt
 Notes.md
 # data
 data/*
