@@ -7,7 +7,7 @@ Imaginez une entreprise fictive, **CineData Insights**, qui souhaite révolution
 Mais il y a un problème... **Leurs données sont dans un état chaotique !** 
 Elles sont éparpillées dans quelques fichiers CSV, rendant toute exploitation fastidieuse. Aucun système centralisé ne permet de requêter efficacement les informations sur les films, les notes attribuées par les utilisateurs ou encore les tags associés.  
 
-C'est là **que vous entrez en jeu**, en tant que **Consultant Data polyvalent** ! Votre mission ? Transformer ce chaos en un écosystème data performant et interactif. Vous serez **le chef d’orchestre** de ce projet, portant successivement trois casquettes :  
+C'est là **que ce projet entre en jeu**, en tant que **Consultant Data polyvalent** ! Notre mission ? Transformer ce chaos en un écosystème data performant et interactif. Nous serons **le chef d’orchestre** de ce projet, portant successivement trois casquettes :  
 
 ---
 
@@ -63,26 +63,7 @@ C'est là **que vous entrez en jeu**, en tant que **Consultant Data polyvalent**
 - Un notebook d'analyse exploratoire interactif.  
 - Une **application web Streamlit** connectée à l’API qui présente, de manière interactive, les insights aux parties prenantes.
 
----
-
-## **Pourquoi cette mission est incontournable pour tout Consultant Data ?**  
-
-- **Expérience complète et immersive** : Vous touchez **à toutes les facettes** d’un projet Data moderne.  
-- **Projet concret et impactant** : Qui n’a jamais rêvé d’un système intelligent pour découvrir les meilleurs films ?  
-- **Compétences ultra-prisées** : Vous manipulez **FastAPI, SQLAlchemy, Streamlit, Machine Learning, Cloud, et Docker**.  
-- **Un atout pour votre portfolio** : À la fin, vous aurez un projet **clé en main**, à exhiber fièrement sur GitHub ou en démo pour vos futurs clients.  
-
-- **Prêt à relever le défi et à devenir un Développeur d'API et Data analyst ?** Rejoignez le cours dès maintenant et embarquez pour une aventure 100% immersive dans le monde fascinant des données du cinéma ! 
-
----
-
-**BONUS** :  
-- Vous aurez accès au **code source complet** + des **exercices pratiques** pour maîtriser chaque brique de ce projet.  
-- Un certificat de réussite pour **booster votre CV et LinkedIn**.  
-
----
-
-### **Achetez le cours maintenant et transformez-vous en Expert Data !** 
+ 
 
 ---
 
@@ -544,7 +525,7 @@ Cette ligne **crée un moteur de base de données SQLAlchemy** qui va permettre 
   - SQLite, par défaut, **interdit l'utilisation de la même connexion dans plusieurs threads**.
   - Or, FastAPI (et d'autres frameworks web) peuvent utiliser du **multithreading** pour gérer plusieurs requêtes en parallèle.
   - Donc `check_same_thread=False` **désactive cette restriction**.
-  - Attention : À utiliser uniquement si **tu gères bien les sessions SQLAlchemy** (ce que fait FastAPI avec dépendances `Depends()`).
+  - Attention : À utiliser uniquement si **On gère bien les sessions SQLAlchemy** (ce que fait FastAPI avec dépendances `Depends()`).
 
 ---
 
@@ -554,19 +535,19 @@ Cette ligne **crée un moteur de base de données SQLAlchemy** qui va permettre 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 ```
 
-`sessionmaker` est une **fabrique de sessions**. Tu l’utilises pour créer des sessions qui vont te permettre de lire/écrire dans la base de données.
+`sessionmaker` est une **fabrique de sessions**. On l’utilise pour créer des sessions qui vont te permettre de lire/écrire dans la base de données.
 
 ##### Explication des arguments :
 - **`autocommit=False`** :
-  - Cela signifie que **tu dois valider les transactions manuellement** (avec `.commit()`).
-  - C’est plus sûr : tu peux rollback en cas d’erreur.
+  - Cela signifie qu' **on doit valider les transactions manuellement** (avec `.commit()`).
+  - C’est plus sûr : on peut rollback en cas d’erreur.
 
 - **`autoflush=False`** :
   - Si c'était `True`, SQLAlchemy enverrait automatiquement les changements en base **avant certaines requêtes SELECT**.
   - Ici, on veut plus de contrôle. Donc on met `False` : les changements sont flushés **manuellement ou au moment du commit**.
 
 - **`bind=engine`** :
-  - Lie la session à l’**engine** que tu as créé plus haut.
+  - Lie la session à l’**engine** qu'on a créé plus haut.
   - Ainsi, toutes les sessions créées avec `SessionLocal()` vont utiliser la base `movies.db`.
 
 
@@ -594,7 +575,7 @@ Cette ligne crée une **classe de base** nommée `Base` à partir de laquelle **
 
 ##### Pourquoi c’est utile ?
 
-Lorsque tu définis une classe comme ceci :
+Lorsqu'on définit une classe comme ceci :
 
 ```python
 class Movie(Base):
@@ -603,7 +584,7 @@ class Movie(Base):
     title = Column(String, index=True)
 ```
 
-Tu es en train de créer :
+On est en train de créer :
 - une **classe Python** (`Movie`)
 - qui est **liée à une table SQL** (`movies`)
 - avec des **colonnes** (`id`, `title`…)
@@ -1202,7 +1183,7 @@ class MovieDetailed(MovieBase):
   - `tags` : liste des tags
   - `link` : les identifiants externes (IMDb, TMDb)
 
-➡️ C’est ce schéma que tu utiliseras pour des **détails complets sur un film**, ex: `/movies/1`.
+➡️ C’est ce schéma qu'on utilisera pour des **détails complets sur un film**, ex: `/movies/1`.
 
 ---
 
@@ -1224,7 +1205,7 @@ class MovieSimple(BaseModel):
 
 * **Schémas "simples" pour utiliser indépendamment**
 
-Si tu exposes un jour des endpoints `/ratings` ou `/tags` seuls, tu pourras utiliser ces schémas :
+Si on expose un jour des endpoints `/ratings` ou `/tags` seuls, on pourra utiliser ces schémas :
 
 - `RatingSimple` : une note
 - `TagSimple` : un tag
@@ -1340,19 +1321,19 @@ Au cours du développement de l'API, on peut tester un point de terminaison de d
    http://127.0.0.1:8000/docs
    ```
 
-3. Tu verras une interface interactive avec **tous tes endpoints**. Clique sur :
+3. On verra une interface interactive avec **tous tes endpoints**. Clique sur :
    - **GET** `/movies/{movie_id}`  
    - Clique sur le bouton **"Try it out"**  
    - Entre un `movie_id` (par exemple `1`)  
    - Clique sur **"Execute"**
 
-4. Tu verras la requête envoyée, la réponse JSON, et le code de retour HTTP (200, 404, etc.)
+4. On verra la requête envoyée, la réponse JSON, et le code de retour HTTP (200, 404, etc.)
 
 ---
 
 ##### Méthode 2 : Entrer directement l’URL dans le navigateur
 
-Si tu veux tester sans passer par Swagger, tape simplement dans la barre d’adresse :
+Si on veut tester sans passer par Swagger, tape simplement dans la barre d’adresse :
 
 ```
 http://127.0.0.1:8000/movies/1
@@ -1364,7 +1345,7 @@ http://127.0.0.1:8000/movies/1
 
 ##### Remarques
 
-- Si tu reçois une **erreur 404**, c’est que :
+- Si on reçoit une **erreur 404**, c’est que :
   - Le `movie_id` n'existe pas dans ta base
   - Ou bien l’endpoint `/movies/{movie_id}` n’est pas encore bien défini dans `main.py`
 
@@ -1394,7 +1375,7 @@ def list_movies(
     return movies
 ```
 
-Pour tester le endpoint `/movies`, voici des **exemples de requêtes HTTP** que tu peux entrer dans le navigateur ou via Swagger UI :
+Pour tester le endpoint `/movies`, voici des **exemples de requêtes HTTP** qu'on peut entrer dans le navigateur ou via Swagger UI :
 
 ---
 
@@ -1458,7 +1439,7 @@ Les 5 premiers films dont le titre contient “story” **et** le genre contient
 
 ---
 
-Tu peux aussi faire tout ça dans Swagger UI :  
+On peut aussi faire tout ça dans Swagger UI :  
  http://127.0.0.1:8000/docs → sélectionne `/movies` → *Try it out*
 
 ---
@@ -1493,7 +1474,7 @@ def read_rating(
     return rating
 ```
 
-Voici des exemples concrets que tu peux tester dans ton navigateur pour le nouvel **endpoint `/ratings/{user_id}/{movie_id}`**.
+Voici des exemples concrets quon peut tester dans ton navigateur pour le nouvel **endpoint `/ratings/{user_id}/{movie_id}`**.
 
 ---
 
@@ -1583,7 +1564,7 @@ Statut HTTP : `422 Unprocessable Entity`
 
 ##### Astuce : Utiliser l’interface Swagger UI
 
-Tu peux aussi **tester facilement cet endpoint dans ton navigateur à l’adresse :**
+On peut aussi **tester facilement cet endpoint dans ton navigateur à l’adresse :**
 
 ```
 http://localhost:8000/docs
@@ -2242,13 +2223,13 @@ Vous devriez voir le **message de santé** de votre API (si vous en avez défini
 
 #### Étape 8 – Tester les endpoints de l’API via Swagger ou navigateur
 
-Une fois l’API déployée, tu peux **tester tous les endpoints** comme tu l’avais fait en local. Il te suffit de te rendre à l’adresse suivante :
+Une fois l’API déployée, on peut **tester tous les endpoints** comme on l’avait fait en local. Il te suffit de te rendre à l’adresse suivante :
 
 **Swagger UI :**  
  `https://movielens-api-rmr7.onrender.com/docs`  
-Tu auras une interface interactive qui permet de tester facilement chaque route de l’API.
+On aura une interface interactive qui permet de tester facilement chaque route de l’API.
 
-Tu peux aussi copier-coller l’URL dans ton navigateur pour faire les tests directement.
+On peut aussi copier-coller l’URL dans ton navigateur pour faire les tests directement.
 
 ---
 
@@ -2307,7 +2288,7 @@ Ce endpoint retourne un résumé contenant :
 
 #### Étape 9 – Tester l’API en Python avec `httpx`
 
-Tu peux aussi tester ton API **directement depuis un script Python**, en utilisant la librairie `httpx`.  
+On peut aussi tester ton API **directement depuis un script Python**, en utilisant la librairie `httpx`.  
 Cela permet d’intégrer ton API dans un pipeline de données ou une application.
 
 > **N’oublie pas de remplacer** l’URL locale (`http://localhost:8000`) par l’URL publique de ton API déployée, par exemple :  
@@ -2397,7 +2378,7 @@ Docker est un outil **puissant et très populaire** dans l’écosystème tech m
 
 ### Installer Docker
 
-Tu peux installer Docker en suivant les instructions officielles en fonction de ton système d’exploitation (Windows, macOS ou Linux) : https://docs.docker.com/get-docker/
+On peut installer Docker en suivant les instructions officielles en fonction de ton système d’exploitation (Windows, macOS ou Linux) : https://docs.docker.com/get-docker/
 
 > Prends le temps de bien suivre les étapes. L’installation est généralement rapide.
 
@@ -2411,7 +2392,7 @@ Une fois l’installation terminée, ouvre un terminal et tape la commande suiva
 docker --version
 ```
 
-Si Docker est bien installé, tu verras s’afficher la version actuelle, comme ceci :
+Si Docker est bien installé, on verra s’afficher la version actuelle, comme ceci :
 
 ```
 Docker version 25.0.3, build 4debf41
@@ -2455,9 +2436,9 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 
 ```
 
-Un **Dockerfile** est un fichier texte qui explique à Docker **comment construire une image** contenant ton application (ici, ton API FastAPI).
+Un **Dockerfile** est un fichier texte qui explique à Docker **comment construire une image** contenant notre application (ici, notre API FastAPI).
 
-C’est comme **une recette de cuisine** : chaque ligne du fichier indique une étape pour préparer l’environnement nécessaire à ton application.
+C’est comme **une recette de cuisine** : chaque ligne du fichier indique une étape pour préparer l’environnement nécessaire à l'application.
 
 ---
 
@@ -2505,7 +2486,7 @@ On utilise `uvicorn`, le serveur qui exécute FastAPI. Il va chercher l’applic
 
 ---
 
-Avec ce Dockerfile, tu peux créer une **image Docker contenant ton API** prête à être exécutée.
+Avec ce Dockerfile, on peut créer une **image Docker contenant ton API** prête à être exécutée.
 
 Mais avant de construire une image Docker, il est **essentiel** de créer un fichier `.dockerignore`.
 
@@ -2548,7 +2529,7 @@ Le fichier `.dockerignore` fonctionne **exactement comme un `.gitignore`**, mais
 Docker copierait **tout le dossier** (y compris `.git`, `.venv`, fichiers inutiles, etc.), ce qui rend l’image :
 - plus **lourde** 
 - plus **lente à construire** 
-- plus **vulnérable** (ex. : si tu oublies un `.env` avec une clé secrète)
+- plus **vulnérable** (ex. : si on oublie un `.env` avec une clé secrète)
 
 ---
 
@@ -2558,7 +2539,7 @@ Le fichier `.dockerignore` :
 - **Réduit la taille** de l’image Docker
 - **Accélère le build**
 - **Protège les données sensibles**
-- Évite de copier du bazar inutile
+- **Évite de copier du bazar inutile**
 
 ---
 
@@ -2567,7 +2548,7 @@ Le fichier `.dockerignore` :
 On utilise la commande :
 
 ```bash
-docker build -t nom_de_ton_image .
+docker build -t nom_de_l'_image .
 ```
 
 Cette commande sert à **construire une image Docker** à partir de ton `Dockerfile`. Voyons cette commande en détail :
@@ -2577,21 +2558,21 @@ Cette commande sert à **construire une image Docker** à partir de ton `Dockerf
 | Élément | Explication |
 |--------|-------------|
 | `docker` | Lance l’outil Docker depuis ton terminal |
-| `build` | Indique que tu veux **construire une image** Docker |
-| `-t nom_de_ton_image` | Donne un **nom (tag)** à ton image, ici `nom_de_ton_image` |
+| `build` | Indique que on veut **construire une image** Docker |
+| `-t nom_de_l'_image` | Donne un **nom (tag)** à ton image, ici `nom_de_l'_image` |
 | `.` | Spécifie le **contexte de construction**, ici le dossier courant (`.`) où se trouve le `Dockerfile` |
 
 ---
 
 **Concrètement, que fait Docker ici ?**
-1. Il lit ton `Dockerfile`
+1. Il lit le `Dockerfile`
 2. Il suit **chaque instruction** (`FROM`, `COPY`, `RUN`, `CMD`, etc.)
 3. Il crée une **image Docker complète**, prête à être lancée
-4. Il la nomme `nom_de_ton_image` pour que tu puisses la réutiliser ensuite
+4. Il la nomme `nom_de_l'_image` pour qu'on puisse la réutiliser ensuite
 
 ---
 
-**Tu peux voir l’image créée avec** :
+**On peut voir l’image créée avec** :
 ```bash
 docker images
 ```
@@ -2610,7 +2591,7 @@ En résumé, cette commande te permet de transformer ton code et tes dépendance
 
 #### 3️- Lancer un conteneur
 
-Une fois l’image créée, tu peux **démarrer l’API dans un conteneur** avec :
+Une fois l’image créée, on peux **démarrer l’API dans un conteneur** avec :
 
 ```bash
 docker run -d -p 80:80 --name donne_un_nom_au_conteneur nom_de_ton_image
@@ -2626,13 +2607,13 @@ docker run -d -p 80:80 --name donne_un_nom_au_conteneur nom_de_ton_image
 
 - `--name donne_un_nom_au_conteneur` : Cette option te permet de donner un nom personnalisé à ton conteneur. Dans cet exemple, le conteneur sera nommé `donne_un_nom_au_conteneur`. Cela peut être utile pour identifier facilement ton conteneur dans une liste ou pour l'arrêter et le gérer plus facilement.
 
-- `nom_de_ton_image` : Le nom de l'image Docker que tu viens de construire.
+- `nom_de_ton_image` : Le nom de l'image Docker qu'on vient de construire.
 
 **Vérification** :
 
-Tu peux maintenant vérifier que ton conteneur fonctionne en accédant à `http://localhost:80` et refaire des tests des endpoins à travers l'interface Swagger : `http://localhost/docs`
+On peut maintenant vérifier que ton conteneur fonctionne en accédant à `http://localhost:80` et refaire des tests des endpoins à travers l'interface Swagger : `http://localhost/docs`
 
-Si tu veux vérifier les conteneurs en cours d'exécution, tu peux aussi utiliser la commande :
+Si on veut vérifier les conteneurs en cours d'exécution, on peut aussi utiliser la commande :
 
 ```bash
 docker ps
@@ -2658,7 +2639,7 @@ Voici quelques commandes utiles pour nettoyer ton environnement Docker après av
    ```
 
 2. **Supprimer un conteneur**
-   Après avoir arrêté ton conteneur, tu peux le supprimer avec la commande suivante :
+   Après avoir arrêté ton conteneur, on peut le supprimer avec la commande suivante :
 
    ```bash
    docker rm movielens-api-container
@@ -2676,7 +2657,7 @@ Voici quelques commandes utiles pour nettoyer ton environnement Docker après av
    Assure-toi d'abord que tous les conteneurs basés sur cette image sont arrêtés et supprimés avant de la supprimer.
 
 4. **Supprimer toutes les images**
-   Pour supprimer toutes les images Docker présentes sur ton système (attention, cela supprimera toutes les images et tu devras les reconstruire plus tard si nécessaire) :
+   Pour supprimer toutes les images Docker présentes sur ton système (attention, cela supprimera toutes les images et on devra les reconstruire plus tard si nécessaire) :
 
    ```bash
    docker rmi $(docker images -q)
@@ -2694,7 +2675,7 @@ Voici quelques commandes utiles pour nettoyer ton environnement Docker après av
    Cela supprimera tous les conteneurs, qu'ils soient actifs ou non.
 
 6. **Supprimer tous les conteneurs et images**
-   Si tu souhaites tout supprimer en une seule commande (tous les conteneurs et toutes les images), tu peux combiner les deux commandes comme suit :
+   Si on souhaite tout supprimer en une seule commande (tous les conteneurs et toutes les images), on peut combiner les deux commandes comme suit :
 
    ```bash
    docker system prune -a
@@ -2703,7 +2684,7 @@ Voici quelques commandes utiles pour nettoyer ton environnement Docker après av
    Cela supprimera tous les conteneurs, images et volumes inutilisés. C'est une commande puissante à utiliser avec précaution, car elle supprimera toutes les ressources non utilisées par Docker.
 
 **En résumé** :
-Après avoir terminé tes tests ou ton déploiement, il est important de nettoyer ton environnement Docker (au cas où tu ne comptes plus utiliser les images/conteneurs créés) pour libérer de l'espace et éviter l'accumulation de ressources inutiles. Les commandes ci-dessus te permettent de stopper et supprimer les conteneurs et les images Docker.
+Après avoir terminé tes tests ou ton déploiement, il est important de nettoyer ton environnement Docker (au cas où on ne compte plus utiliser les images/conteneurs créés) pour libérer de l'espace et éviter l'accumulation de ressources inutiles. Les commandes ci-dessus te permettent de stopper et supprimer les conteneurs et les images Docker.
 
 
 ## Création d'un un kit de développement logiciel (*Software development kit* ou SDK) pour l'API
@@ -2812,7 +2793,7 @@ dependencies = [
   - `classifiers` : Des informations sur le statut du projet (par exemple, si c'est un projet alpha) et des détails techniques sur la compatibilité.
   - `dependencies` : La liste des dépendances Python nécessaires à l'exécution du SDK.
 
-Le fichier `pyproject.toml` est essentiel pour gérer ton projet Python de manière moderne et cohérente, et il est requis si tu souhaites publier ton SDK sur **PyPI**.
+Le fichier `pyproject.toml` est essentiel pour gérer ton projet Python de manière moderne et cohérente, et il est requis si on souhaite publier ton SDK sur **PyPI**.
 
 ---
 
@@ -2893,7 +2874,7 @@ import os
 load_dotenv()
 ```
 Charge les variables d’environnement depuis un fichier `.env` (utile pour ne pas écrire les secrets ou URL directement dans le code).  
-Par exemple, tu peux définir ceci dans un fichier `.env` :
+Par exemple, on peut définir ceci dans un fichier `.env` :
 ```env
 MOVIE_API_BASE_URL=http://localhost:8000
 ```
@@ -2930,7 +2911,7 @@ if not self.movie_base_url:
     raise ValueError("L'URL de base est requise...")
 ```
 
-Le `print()` temporaire peut t’aider au débogage (mais tu pourras le supprimer ou le logger proprement plus tard).
+Le `print()` temporaire peut t’aider au débogage (mais on pourra le supprimer ou le logger proprement plus tard).
 
 ---
 
@@ -2985,7 +2966,7 @@ return MovieDetailed(**response.json())
 
 2. **Offrir une expérience Pythonic**
 
-Tu peux faire :
+On peut faire :
 
 ```python
 movie = client.get_movie(123)
@@ -3006,7 +2987,7 @@ C’est plus sûr, plus lisible, plus robuste.
 
 3. **Mutualiser le code (DRY)**
 
-Tu **réutilises les mêmes classes Pydantic que pour l’API**, donc :
+On **réutilise les mêmes classes Pydantic que pour l’API**, donc :
 - Pas besoin de redéfinir les modèles deux fois.
 - Moins de risques d’incohérences.
 - Maintenance simplifiée.
@@ -3024,7 +3005,7 @@ from .movie_client import MovieClient
 from .movie_config import MovieConfig
 ```
 
-Tu permets à l’utilisateur final de faire :
+On permet à l’utilisateur final de faire :
 
 ```python
 from moviesdk import MovieClient, MovieConfig
@@ -3045,7 +3026,7 @@ from moviesdk.movie_config import MovieConfig
 
 Un SDK bien conçu doit être **facile à importer et à utiliser**.
 
-Tu veux que les gens fassent :
+On veut que les gens fassent :
 
 ```python
 from moviesdk import MovieClient
@@ -3063,7 +3044,7 @@ C’est plus lisible, plus direct.
 
 2. **Masque la structure interne**
 
-Avec l’import centralisé dans `__init__.py`, tu **masques les sous-modules internes** à l’utilisateur.  
+Avec l’import centralisé dans `__init__.py`, on **masque les sous-modules internes** à l’utilisateur.  
 Cela permet de :
 - Garder une API publique propre.
 - Pouvoir modifier la structure interne du package **sans casser les imports** pour l’utilisateur.
@@ -3072,7 +3053,7 @@ Cela permet de :
 
 3. **Prépare le terrain pour une belle doc**
 
-Quand tu rédigeras la documentation de ton SDK (README, docstring, etc.), tu n’auras qu’à montrer :
+Quand on rédigera la documentation de ton SDK (README, docstring, etc.), on n’aura qu’à montrer :
 
 ```python
 from moviesdk import MovieClient
@@ -3294,7 +3275,7 @@ Cette commande est très utilisée pendant le **développement d’un package Py
 **Que fait cette commande ?**
 
 ##### `pip install`  
-Installe un package Python dans ton environnement (comme tu le fais avec `pip install requests`).
+Installe un package Python dans ton environnement (comme on le fait avec `pip install requests`).
 
 ##### `-e` = `--editable`  
 Le flag `-e` signifie **"editable mode"** (mode modifiable). Cela veut dire que **le package n’est pas copié** dans le dossier `site-packages`, mais un **lien symbolique** est créé vers ton dossier local (`.`).
@@ -3306,9 +3287,9 @@ C’est le chemin vers le **répertoire courant**, donc ici le dossier `sdk/`, q
 
 **Pourquoi c’est utile pour ton SDK ?**
 
-Quand tu développes ton SDK, il est encore en évolution. Grâce à l’installation en mode *editable* :
+Quand on développe ton SDK, il est encore en évolution. Grâce à l’installation en mode *editable* :
 
-- Tu peux modifier tes fichiers source (ex : `movie_client.py`, `schemas.py`, etc.)
+- On peut modifier tes fichiers source (ex : `movie_client.py`, `schemas.py`, etc.)
 - Et **voir les changements immédiatement** sans devoir réinstaller le package à chaque fois.
 
 ---
@@ -3319,7 +3300,7 @@ Pour résumer, en exécutant :
 pip install -e .
 ```
 
-Tu rends le package `moviesdk` utilisable **partout dans ton projet** (ou dans des notebooks, scripts, etc.) comme s’il était installé normalement, **mais tu peux continuer à modifier le code source** en temps réel.
+On rend le package `moviesdk` utilisable **partout dans ton projet** (ou dans des notebooks, scripts, etc.) comme s’il était installé normalement, **mais on peut continuer à modifier le code source** en temps réel.
 
 
 | Élément                 | Description                                                         |
@@ -3881,61 +3862,60 @@ twine upload dist/*
 ---
 
 #### Résultat
+Nous pouvons maintenant visiter la page de notre package et voir la documentation s’afficher correctement :
 
-Vous pouvez maintenant visiter la page de votre package et voir la documentation s’afficher correctement :
-
-[https://pypi.org/project/moviesdk/0.0.2/](https://pypi.org/project/moviesdk/0.0.2/)
+[https://pypi.org/project/sdkForMovies/0.0.2/](https://pypi.org/project/sdkForMovies/0.0.2/)
 
 ---
 
 
 ## Conclusion – Phase 1 : Développeur Python & Architecte API
 
-Félicitations ! Vous venez d’achever avec succès la **Phase 1** de votre parcours vers la maîtrise du développement backend en Python, avec un focus sur l’architecture d’API modernes. Cette étape vous a permis de poser des fondations solides en conception de bases de données, en programmation orientée objet avec SQLAlchemy, en création d’API avec FastAPI, et en publication de SDK sur PyPI.
+Félicitations ! Nous venons d’achever avec succès la **Phase 1** de notre parcours vers la maîtrise du développement backend en Python, avec un focus sur l’architecture d’API modernes. Cette étape vous a permis de poser des fondations solides en conception de bases de données, en programmation orientée objet avec SQLAlchemy, en création d’API avec FastAPI, et en publication de SDK sur PyPI.
 
 ---
 
-### Vous avez conçu la base de votre application de A à Z
+### Nous avons conçu la base de votre application de A à Z
 
--  **Conception de la base de données relationnelle** : vous avez conçu des tables et des relations métier (films, évaluations, tags...) en utilisant SQLite.
+-  **Conception de la base de données relationnelle** : nous avons conçu des tables et des relations métier (films, évaluations, tags...) en utilisant SQLite.
 -  **Importation de données réelles** depuis des fichiers CSV (MovieLens) pour alimenter vos tables.
 -  **Écriture de requêtes SQL** pour extraire, manipuler et explorer les données stockées.
 
 ---
 
-### Vous avez mis en place la couche Data & ORM en Python
+### Nous avons mis en place la couche Data & ORM en Python
 
--  **Création de modèles SQLAlchemy** pour représenter les tables de votre base dans le monde Python.
--  **Connexion à la base de données avec SQLAlchemy** et configuration d’une session propre pour exécuter vos requêtes.
--  **Fonctions utilitaires (helpers)** permettant d’interagir efficacement avec votre base de données (récupérer des films, ajouter une évaluation...).
+-  **Création de modèles SQLAlchemy** pour représenter les tables de notre base dans le monde Python.
+-  **Connexion à la base de données avec SQLAlchemy** et configuration d’une session propre pour exécuter nos requêtes.
+-  **Fonctions utilitaires (helpers)** permettant d’interagir efficacement avec notre base de données (récupérer des films, ajouter une évaluation...).
 
 ---
 
-### Vous avez développé une API robuste avec FastAPI
+### Nous avons développé une API robuste avec FastAPI
 
--  **Création des endpoints d’API REST** pour exposer vos données via HTTP.
+-  **Création des endpoints d’API REST** pour exposer nos données via HTTP.
 -  **Utilisation de Pydantic** pour définir des schémas de validation et des objets de transfert de données (DTO).
 -  **Tests des routes API** avec Swagger UI et ReDoc, grâce à la documentation interactive auto-générée de FastAPI.
 -  **Tests en local**, dans un conteneur **Docker**, ou **déploiement en ligne** sur **Render**.
 
 ---
 
-### Vous avez produit un SDK Python pour interagir avec l’API
+### Nous avons produit un SDK Python pour interagir avec l’API
 
 -  **Construction d’un SDK Python (`moviesdk`)** avec une interface claire pour interagir avec les endpoints exposés par l’API.
 -  **Publication du SDK sur PyPI**, avec un `README.md` bien rédigé, respectant les normes de documentation.
 -  **Tests du SDK publié** dans un nouveau projet, avec des appels simples en Python pour valider les fonctionnalités.
--  Votre SDK est désormais accessible à toute la communauté Python, comme tout package professionnel.
+-  **Notre SDK est désormais accessible à toute la communauté Python**, comme tout package professionnel.
 
 ---
 
-### Compétences clés que vous avez acquises
+### Compétences clés que nous avons acquises
 
 -  Conception de bases de données relationnelles
 -  ORM avec SQLAlchemy
 -  Architecture API RESTful avec FastAPI
 -  Validation et typage fort avec Pydantic
--  Utilisation de Docker pour contenairiser votre application
+-  Utilisation de Docker pour contenairiser notre application
 -  Déploiement cloud sur Render
 -  Génération de documentation API automatique (Swagger / Redoc)
 -  Packaging Python, publication sur PyPI, gestion de versions
@@ -3945,18 +3925,9 @@ Félicitations ! Vous venez d’achever avec succès la **Phase 1** de votre par
 
 ### Et maintenant ?
 
-Dans la **Phase 2 (Data Analyst)**, vous allez changer de perspective.
-
-Vous allez **consommer des APIs**, extraire et analyser des données à l’aide de pandas, créer des visualisations et des tableaux de bord pour répondre à des questions métiers concrètes. Vous allez découvrir comment utiliser les données publiées par une API (comme la vôtre) pour générer des **insights puissants**.
+Dans la **Phase 2 (Data Analyst)**, nous allons changer de perspective.
+Nous allons **consommer des APIs**, extraire et analyser des données à l’aide de pandas, créer des visualisations et des tableaux de bord pour répondre à des questions métiers concrètes. Nous allons découvrir comment utiliser les données publiées par une API (comme la nôtre) pour générer des **insights puissants**.
 
 ---
-
-Bravo pour tout le chemin parcouru. Vous avez déjà un projet complet à montrer dans votre portfolio.  
-Vous êtes maintenant capable de **construire une API professionnelle de bout en bout et de créer un SDK réutilisable**.  
-C’est exactement ce que font les développeurs dans des équipes tech modernes !
-
-On se retrouve très vite pour la Phase 2 : **Data Analyst – From API to Insight**.
-
---- 
 
 
