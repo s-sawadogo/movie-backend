@@ -11,6 +11,17 @@ C'est là **que ce projet entre en jeu**, en tant que **Consultant Data polyvale
 
 ---
 
+## Demonstration de la phase 1
+
+### L'API permettant d'exposer les données
+
+![package Python](assets/API_1.gif)
+
+![package Python](assets/API_2.gif)
+
+### Le SDK (package) Python
+![package Python](assets/Package_Python.gif)
+
 ## **Phase 1 : Développeur Python & Architecte API**  
 
 ![](assets/phase1_architecture.png)
